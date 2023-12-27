@@ -19,10 +19,13 @@ func RunAsynchronus(group *sync.WaitGroup) {
 func TestWaitGroup(t *testing.T) {
 	group := &sync.WaitGroup{}
 
+	x := 0
 	for i := 0; i < 100; i++ {
 		go RunAsynchronus(group)
+		x++
 	}
 
 	group.Wait()
 	fmt.Println("Complete")
+	fmt.Println("Total Hello", x)
 }
